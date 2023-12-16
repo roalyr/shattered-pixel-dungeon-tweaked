@@ -95,16 +95,22 @@ public class HallsLevel extends RegularLevel {
 
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		if (forceMax) return 9;
-		//8 to 9, average 8.33
-		return 8+Random.chances(new float[]{2, 1});
+		// TWEAK: Increase number of standard rooms based on depth.
+		int n = (int) Math.pow(Dungeon.depth, 2.0) + 1;
+		if (n > 100) {
+			n = 100;
+		}
+		return n;
 	}
-	
+
 	@Override
 	protected int specialRooms(boolean forceMax) {
-		if (forceMax) return 3;
-		//2 to 3, average 2.5
-		return 2 + Random.chances(new float[]{1, 1});
+		// TWEAK: Increase number of special rooms.
+		int n = (int) Math.pow(Dungeon.depth, 2.0)/10 + 1;
+		if (n > 10) {
+			n = 10;
+		}
+		return n;
 	}
 	
 	@Override

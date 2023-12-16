@@ -52,6 +52,7 @@ import com.shatteredpixel.shatteredpixeldungeon.journal.Document;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.levels.builders.Builder;
 import com.shatteredpixel.shatteredpixeldungeon.levels.builders.FigureEightBuilder;
+import com.shatteredpixel.shatteredpixeldungeon.levels.builders.LineBuilder;
 import com.shatteredpixel.shatteredpixeldungeon.levels.builders.LoopBuilder;
 import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
 import com.shatteredpixel.shatteredpixeldungeon.levels.rooms.Room;
@@ -163,7 +164,7 @@ public abstract class RegularLevel extends Level {
 	}
 	
 	protected Builder builder(){
-		if (Random.Int(2) == 0){
+		/*if (Random.Int(2) == 0){
 			return new LoopBuilder()
 					.setLoopShape( 2 ,
 							Random.Float(0f, 0.65f),
@@ -173,7 +174,8 @@ public abstract class RegularLevel extends Level {
 					.setLoopShape( 2 ,
 							Random.Float(0.3f, 0.8f),
 							0f);
-		}
+		}*/
+		return new LoopBuilder();
 
 	}
 	
@@ -200,7 +202,7 @@ public abstract class RegularLevel extends Level {
 		
 		// TWEAK: Let's add more mobs based on room number.
 		int num_standards = standardRooms(feeling == Feeling.LARGE);
-		int mobs = 5 + Dungeon.depth + Random.Int(10) + num_standards;
+		int mobs = Dungeon.depth * 2 + num_standards * 2;
 		if (feeling == Feeling.LARGE){
 			mobs = (int)Math.ceil(mobs * 1.33f);
 		}
@@ -347,7 +349,7 @@ public abstract class RegularLevel extends Level {
 		// drops 3/4/5 items 60%/30%/10% of the time
 		// TWEAK: A bit more items based on room number.
 		int num_standards = standardRooms(feeling == Feeling.LARGE);
-		int nItems = 3 + Random.chances(new float[]{6, 3, 1}) + num_standards / 2;
+		int nItems = 3 + Random.chances(new float[]{6, 3, 1}) + num_standards;
 
 		if (feeling == Feeling.LARGE){
 			nItems += 5;

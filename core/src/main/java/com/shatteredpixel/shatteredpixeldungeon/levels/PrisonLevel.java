@@ -92,16 +92,22 @@ public class PrisonLevel extends RegularLevel {
 
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		if (forceMax) return 6;
-		//5 to 6, average 5.5
-		return 5+Random.chances(new float[]{1, 1});
+		// TWEAK: Increase number of standard rooms based on depth.
+		int n = (int) Math.pow(Dungeon.depth, 2.0) + 1;
+		if (n > 100) {
+			n = 100;
+		}
+		return n;
 	}
-	
+
 	@Override
 	protected int specialRooms(boolean forceMax) {
-		if (forceMax) return 3;
-		//1 to 3, average 2.0
-		return 1+Random.chances(new float[]{1, 3, 1});
+		// TWEAK: Increase number of special rooms.
+		int n = (int) Math.pow(Dungeon.depth, 2.0)/10 + 1;
+		if (n > 10) {
+			n = 10;
+		}
+		return n;
 	}
 	
 	@Override

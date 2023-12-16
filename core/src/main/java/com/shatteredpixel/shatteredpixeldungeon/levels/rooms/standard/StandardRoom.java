@@ -34,10 +34,11 @@ import java.util.ArrayList;
 public abstract class StandardRoom extends Room {
 	
 	public enum SizeCategory {
-		
-		NORMAL(4, 10, 1),
-		LARGE(10, 14, 2),
-		GIANT(14, 18, 3);
+
+		// TWEAK: Smaller rooms.
+		NORMAL(4, 8, 1),
+		LARGE(8, 10, 2),
+		GIANT(10, 14, 3);
 		
 		public final int minDim, maxDim;
 		public final int roomValue;

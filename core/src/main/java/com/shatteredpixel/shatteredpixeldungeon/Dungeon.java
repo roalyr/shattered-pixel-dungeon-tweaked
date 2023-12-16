@@ -420,9 +420,9 @@ public class Dungeon {
 	
 	public static boolean shopOnLevel() {
 		// TWEAK: Let's make more shops.
-		return depth == 1 || depth == 3 || depth == 5 || depth == 7 
-				|| depth == 9 || depth == 12 || depth == 15 || depth == 17 
-				|| depth == 19;
+		return depth == 1 || depth == 2 || depth == 3 || depth == 4
+				|| depth == 5 || depth == 6 || depth == 14 || depth == 16
+				|| depth == 19 || depth == 21 || depth == 23;
 	}
 	
 	public static boolean bossLevel() {
@@ -438,11 +438,11 @@ public class Dungeon {
 	public static int scalingDepth(){
 		if (Dungeon.hero != null && Dungeon.hero.buff(AscensionChallenge.class) != null){
 			// TWEAK: Let's make the difficulty a bit steeper.
-			return 26 * 1.5f;
+			return 26 * 2;
 		} else {
 			
 			// TWEAK: Let's make the difficulty a bit steeper.
-			return depth * 1.5f;
+			return depth * 2;
 		}
 	}
 

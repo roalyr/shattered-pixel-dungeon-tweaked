@@ -85,18 +85,22 @@ public class SewerLevel extends RegularLevel {
 	
 	@Override
 	protected int standardRooms(boolean forceMax) {
-		// TWEAK: Increase number of standard rooms.
-		if (forceMax) return 30;
-		// Was 4 to 6, average 5
-		return 25+Random.chances(new float[]{1, 1, 1, 1, 1, 1});
+		// TWEAK: Increase number of standard rooms based on depth.
+		int n = (int) Math.pow(Dungeon.depth, 2.0) + 1;
+		if (n > 100) {
+			n = 100;
+		}
+		return n;
 	}
 	
 	@Override
 	protected int specialRooms(boolean forceMax) {
 		// TWEAK: Increase number of special rooms.
-		if (forceMax) return 5;
-		// Was 1 to 2, average 1.8
-		return 1+Random.chances(new float[]{1, 1, 1, 1, 1});
+		int n = (int) Math.pow(Dungeon.depth, 2.0)/10 + 1;
+		if (n > 10) {
+			n = 10;
+		}
+		return n;
 	}
 	
 	@Override

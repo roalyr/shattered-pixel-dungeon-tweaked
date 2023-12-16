@@ -197,8 +197,8 @@ public abstract class Level implements Bundlable {
 			
 			// TWEAK: Let's add more SOUs.
 			addItemToSpawn(new ScrollOfUpgrade());
-			addItemToSpawn(new ScrollOfUpgrade());
-			addItemToSpawn(new ScrollOfUpgrade());
+			//addItemToSpawn(new ScrollOfUpgrade());
+			//addItemToSpawn(new ScrollOfUpgrade());
 
 			if (Dungeon.posNeeded()) {
 				Dungeon.LimitedDrops.STRENGTH_POTIONS.count++;
