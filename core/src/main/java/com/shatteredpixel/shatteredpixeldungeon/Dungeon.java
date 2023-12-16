@@ -419,7 +419,10 @@ public class Dungeon {
 	}
 	
 	public static boolean shopOnLevel() {
-		return depth == 6 || depth == 11 || depth == 16;
+		// TWEAK: Let's make more shops.
+		return depth == 1 || depth == 3 || depth == 5 || depth == 7 
+				|| depth == 9 || depth == 12 || depth == 15 || depth == 17 
+				|| depth == 19;
 	}
 	
 	public static boolean bossLevel() {
@@ -434,9 +437,12 @@ public class Dungeon {
 	//is usually the dungeon depth, but can be set to 26 when ascending
 	public static int scalingDepth(){
 		if (Dungeon.hero != null && Dungeon.hero.buff(AscensionChallenge.class) != null){
-			return 26;
+			// TWEAK: Let's make the difficulty a bit steeper.
+			return 26 * 1.5f;
 		} else {
-			return depth;
+			
+			// TWEAK: Let's make the difficulty a bit steeper.
+			return depth * 1.5f;
 		}
 	}
 

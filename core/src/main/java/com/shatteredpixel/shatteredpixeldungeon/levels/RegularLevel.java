@@ -197,8 +197,10 @@ public abstract class RegularLevel extends Level {
 			if (!Statistics.amuletObtained) return 0;
 			else                            return 10;
 		}
-
-		int mobs = 3 + Dungeon.depth % 5 + Random.Int(3);
+		
+		// TWEAK: Let's add more mobs based on room number.
+		int num_standards = standardRooms(feeling == Feeling.LARGE);
+		int mobs = 5 + Dungeon.depth + Random.Int(10) + num_standards;
 		if (feeling == Feeling.LARGE){
 			mobs = (int)Math.ceil(mobs * 1.33f);
 		}
@@ -341,11 +343,14 @@ public abstract class RegularLevel extends Level {
 	@Override
 	protected void createItems() {
 		
+		
 		// drops 3/4/5 items 60%/30%/10% of the time
-		int nItems = 3 + Random.chances(new float[]{6, 3, 1});
+		// TWEAK: A bit more items based on room number.
+		int num_standards = standardRooms(feeling == Feeling.LARGE);
+		int nItems = 3 + Random.chances(new float[]{6, 3, 1}) + num_standards / 2;
 
 		if (feeling == Feeling.LARGE){
-			nItems += 2;
+			nItems += 5;
 		}
 		
 		for (int i=0; i < nItems; i++) {

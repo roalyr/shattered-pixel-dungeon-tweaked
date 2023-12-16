@@ -45,6 +45,9 @@ public class ScrollOfUpgrade extends InventoryScroll {
 		preferredBag = Belongings.Backpack.class;
 
 		unique = true;
+		
+		// Let's increase the abundance a bit.
+		bones = true;
 
 		talentFactor = 2f;
 	}

@@ -194,6 +194,11 @@ public abstract class Level implements Bundlable {
 		if (!Dungeon.bossLevel() && Dungeon.branch == 0) {
 
 			addItemToSpawn(Generator.random(Generator.Category.FOOD));
+			
+			// TWEAK: Let's add more SOUs.
+			addItemToSpawn(new ScrollOfUpgrade());
+			addItemToSpawn(new ScrollOfUpgrade());
+			addItemToSpawn(new ScrollOfUpgrade());
 
 			if (Dungeon.posNeeded()) {
 				Dungeon.LimitedDrops.STRENGTH_POTIONS.count++;
